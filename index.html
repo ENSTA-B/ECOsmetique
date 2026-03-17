@@ -5,20 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Éco-Smétique Score</title>
 
-<!-- POLICE: système pour performance, fallback propres -->
 <style>
 /* —— Variables & Reset —— */
 :root{
-  --green-900:#0f4d3f;
-  --green-700:#0f766e;
-  --green-600:#15803d;
-  --green-200:#dcfce7;
-  --green-100:#e9f7ee;
+  /* Palette basée sur #2C7A22 */
+  --green-900:#1f5518;  /* plus sombre pour titres/contraste */
+  --green-800:#256a1c;
+  --green-700:#2C7A22;  /* TA COULEUR */
+  --green-600:#339229;  /* survols/accents */
+  --green-200:#e2f4dd;  /* fond clair */
+  --green-100:#eff9ea;  /* encore plus doux */
+
   --cream:#f7f8f4;
   --paper:#ffffff;
   --ink:#1a1a1a;
   --muted:#5b6b61;
-  --shadow:0 10px 30px rgba(0,0,0,.07);
+
+  --shadow:0 10px 30px rgba(0,0,0,.06);
   --radius:16px;
   --radius-sm:10px;
 }
@@ -28,14 +31,14 @@ body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
   color:var(--ink);
-  background:linear-gradient(180deg,var(--cream), #f9fbf9);
+  background:linear-gradient(180deg,var(--cream), #fafdf8);
   line-height:1.6;
 }
 
 /* —— Header collant —— */
 .header{
   position:sticky; top:0; z-index:100;
-  background:rgba(255,255,255,.9);
+  background:rgba(255,255,255,.92);
   backdrop-filter: blur(8px);
   border-bottom:1px solid #e6eee8;
 }
@@ -47,11 +50,10 @@ body{
 .header__brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--green-900)}
 .header__brand img{height:44px; width:auto}
 .header__brand span{font-weight:700; letter-spacing:.2px}
-.nav{
-  display:flex; gap:18px; flex-wrap:wrap;
-}
+.nav{ display:flex; gap:18px; flex-wrap:wrap; }
 .nav a{
   text-decoration:none; color:var(--green-900); font-weight:600; padding:8px 10px; border-radius:10px;
+  transition:.2s ease;
 }
 .nav a:hover, .nav a.is-active{ background:var(--green-200); color:var(--green-700)}
 
@@ -154,8 +156,8 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--green-600); outli
 <!-- ===== Header ===== -->
 <header class="header" aria-label="Navigation principale">
   <div class="header__inner">
-    <a class="header__brand" href="#accueil">
-      <img src="images/logo.jpg" alt="Logo Éco-Smétique Score" />
+    <a href="#accueil" class="header__brand">
+      <img src="images/logo.png" alt="Logo Éco‑Smétique Score">
       <span>Éco‑Smétique Score</span>
     </a>
     <nav class="nav" id="menu">
@@ -210,7 +212,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--green-600); outli
   </div>
 
   <div class="callout">
-    💡 Objectif : rendre l’information cosmétique **accessible et actionnable** pour toutes et tous, tout en incitant les marques à améliorer leurs produits.
+    💡 Objectif : rendre l’information cosmétique <strong>accessible et actionnable</strong> pour toutes et tous, tout en incitant les marques à améliorer leurs produits.
   </div>
 </section>
 
@@ -236,7 +238,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--green-600); outli
         <li>Protection des données et conformité RGPD</li>
         <li>Amélioration continue du référentiel et des outils</li>
       </ul>
-      <a class="btn btn--primary" href="#travail" aria-label="Aller à la section comment nous travaillons">Voir la méthode</a>
+      <a href="#travail" class="btn btn--primary" aria-label="Voir la méthode">Voir la méthode</a>
     </div>
   </div>
 </section>
@@ -335,7 +337,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--green-600); outli
   © 2026 — Éco‑Smétique Score — Projet d’intérêt général
 </footer>
 
-<!-- —— JS minimal : surlignage du lien actif au scroll —— -->
+<!-- —— JS minimal : lien actif au scroll —— -->
 <script>
 (function(){
   const links = document.querySelectorAll('.nav a');
