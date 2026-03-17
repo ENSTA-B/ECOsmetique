@@ -1,288 +1,359 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Éco-Smétique Score</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+<!-- POLICE: système pour performance, fallback propres -->
 <style>
-
-:root {
-    --green:#0f766e;
-    --green-light:#d1fae5;
-    --green-dark:#065f46;
-    --cream:#f4f7f6;
-    --white:#ffffff;
-    --text:#1a1a1a;
+/* —— Variables & Reset —— */
+:root{
+  --green-900:#0f4d3f;
+  --green-700:#0f766e;
+  --green-600:#15803d;
+  --green-200:#dcfce7;
+  --green-100:#e9f7ee;
+  --cream:#f7f8f4;
+  --paper:#ffffff;
+  --ink:#1a1a1a;
+  --muted:#5b6b61;
+  --shadow:0 10px 30px rgba(0,0,0,.07);
+  --radius:16px;
+  --radius-sm:10px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+  color:var(--ink);
+  background:linear-gradient(180deg,var(--cream), #f9fbf9);
+  line-height:1.6;
 }
 
-/* GLOBAL */
-body {
-    margin:0;
-    font-family:'Inter', sans-serif;
-    background:var(--cream);
-    color:var(--text);
-    scroll-behavior:smooth;
+/* —— Header collant —— */
+.header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,255,255,.9);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid #e6eee8;
+}
+.header__inner{
+  max-width:1200px; margin:auto;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:10px 20px;
+}
+.header__brand{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--green-900)}
+.header__brand img{height:44px; width:auto}
+.header__brand span{font-weight:700; letter-spacing:.2px}
+.nav{
+  display:flex; gap:18px; flex-wrap:wrap;
+}
+.nav a{
+  text-decoration:none; color:var(--green-900); font-weight:600; padding:8px 10px; border-radius:10px;
+}
+.nav a:hover, .nav a.is-active{ background:var(--green-200); color:var(--green-700)}
+
+/* —— Hero doux —— */
+.hero{
+  background:linear-gradient(135deg, var(--green-900), var(--green-700));
+  color:white; text-align:center;
+  padding:120px 20px 90px;
+}
+.hero h1{ margin:0 0 10px; font-size: clamp(32px, 4.2vw, 56px); font-weight:800; letter-spacing:.3px}
+.hero p{ margin:0 auto; max-width:840px; font-size: clamp(16px, 2vw, 20px); opacity:.92}
+.hero .hero__badge{
+  display:inline-block; margin:20px auto 0; padding:8px 14px; border-radius:999px;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.25); font-size:14px;
 }
 
-section {
-    max-width:1200px;
-    margin:auto;
-    padding:100px 25px;
+/* —— Sections —— */
+section{max-width:1100px; margin:auto; padding:80px 20px}
+.section__title{
+  font-size: clamp(26px, 3vw, 36px);
+  color:var(--green-900); margin:0 0 14px; font-weight:800;
+}
+.section__subtitle{ color:var(--muted); margin:0 0 24px}
+
+/* —— Cartes —— */
+.card{
+  background:var(--paper); border-radius:var(--radius);
+  box-shadow: var(--shadow); padding:24px;
+}
+.card + .card{ margin-top:18px}
+
+/* —— Grilles —— */
+.grid{ display:grid; gap:22px}
+.grid--2{ grid-template-columns:1fr 1fr}
+@media (max-width: 900px){ .grid--2{ grid-template-columns:1fr }}
+
+/* —— Listes —— */
+ul.clean{ padding-left:18px; margin:10px 0}
+ul.clean li{ margin:8px 0}
+
+/* —— Blocs pédagogiques —— */
+.kpi{
+  display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:18px
+}
+.kpi .kpi__item{
+  background:var(--green-100); border:1px solid var(--green-200); border-radius:var(--radius-sm);
+  padding:16px; text-align:center
+}
+.kpi__item strong{ display:block; font-size:20px; color:var(--green-700)}
+.kpi__item span{ font-size:13px; color:var(--green-900)}
+@media (max-width: 700px){ .kpi{ grid-template-columns:1fr }}
+
+/* —— Étapes —— */
+.steps{ counter-reset: s; display:grid; gap:14px}
+.step{
+  background:var(--paper); border:1px solid #e7efe9; border-radius:var(--radius-sm); padding:16px 16px 16px 52px; position:relative;
+}
+.step::before{
+  counter-increment:s; content: counter(s);
+  position:absolute; left:14px; top:14px; width:28px; height:28px; border-radius:50%;
+  display:grid; place-items:center; font-weight:700; color:white;
+  background:linear-gradient(135deg, var(--green-700), var(--green-600));
 }
 
-h2 {
-    color:var(--green-dark);
-    font-size:36px;
-    margin-bottom:20px;
-    font-weight:700;
+/* —— Tableau Tarifs —— */
+.table{
+  width:100%; border-collapse:collapse; margin-top:12px; overflow:hidden; border-radius:var(--radius-sm);
+  box-shadow: var(--shadow);
+}
+.table th, .table td{ padding:14px 12px; text-align:center}
+.table thead th{ background:var(--green-100); color:var(--green-900); font-weight:800}
+.table tbody tr{ background:var(--paper); border-top:1px solid #eef4ef}
+.table tbody tr:nth-child(even){ background:#fbfdfb}
+
+/* —— Callout —— */
+.callout{
+  background:var(--green-100); border-left:6px solid var(--green-700); border-radius:12px;
+  padding:16px 18px; margin-top:16px; color:var(--green-900)
 }
 
-p {
-    font-size:17px;
-    line-height:1.6;
+/* —— Boutons —— */
+.btn{
+  display:inline-block; text-decoration:none; font-weight:700; letter-spacing:.2px;
+  padding:12px 16px; border-radius:12px; transition:.2s;
+}
+.btn--primary{ background:var(--green-700); color:white}
+.btn--primary:hover{ background:var(--green-600)}
+
+/* —— Footer —— */
+footer{
+  margin-top:30px; background:var(--green-900); color:white; text-align:center; padding:38px 20px
 }
 
-/* HEADER FIXE */
-header {
-    position:fixed;
-    top:0; left:0; right:0;
-    z-index:1000;
-    background:var(--white);
-    padding:12px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:2px solid var(--green-light);
-}
-
-header img {
-    height:55px;
-}
-
-nav a {
-    margin:0 18px;
-    font-weight:600;
-    text-decoration:none;
-    color:var(--green-dark);
-    transition:.3s;
-}
-
-nav a:hover {
-    color:var(--green);
-}
-
-/* HERO */
-.hero {
-    padding-top:150px;
-    padding-bottom:120px;
-    background:linear-gradient(135deg, var(--green), var(--green-dark));
-    text-align:center;
-    color:white;
-}
-
-.hero h1 {
-    font-size:50px;
-    margin-bottom:10px;
-}
-
-.hero p {
-    font-size:20px;
-    opacity:0.9;
-    max-width:800px;
-    margin:auto;
-}
-
-/* GRID */
-.grid {
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-    align-items:center;
-}
-
-/* CARD */
-.card {
-    background:var(--white);
-    padding:25px;
-    border-radius:14px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.08);
-    margin:18px 0;
-}
-
-/* TABLE PRICING */
-table {
-    width:100%;
-    border-collapse:collapse;
-    margin-top:25px;
-}
-
-th, td {
-    border:1px solid #ddd;
-    padding:12px;
-    text-align:center;
-}
-
-th {
-    background:var(--green-light);
-    font-weight:700;
-}
-
-/* FOOTER */
-footer {
-    background:var(--green-dark);
-    color:white;
-    text-align:center;
-    padding:40px;
-    margin-top:40px;
-}
-
+/* —— Focus access —— */
+a:focus-visible, button:focus-visible{ outline:3px solid var(--green-600); outline-offset:2px; border-radius:8px}
 </style>
 </head>
-
 <body>
 
-<!-- HEADER -->
-<header>
-    <img src="images/logo       #aboutÀ propos</a>
-        #methodNotre fonctionnement</a>
-        <a href="#pricing">Tarifs</a>
-        <a href="#contact">Contact</a>
+<!-- ===== Header ===== -->
+<header class="header" aria-label="Navigation principale">
+  <div class="header__inner">
+    <a class="header__brand" href="#accueil">
+      <img src="images/logo.png" alt="Logo Éco-Smétique Score" />
+      <span>Éco‑Smétique Score</span>
+    </a>
+    <nav class="nav" id="menu">
+      <a href="#accueil">Accueil</a>
+      <a href="#pedagogie">Plateforme pédagogique</a>
+      <a href="#apropos">À propos</a>
+      <a href="#travail">Comment nous travaillons</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
 </header>
 
-<!-- HERO -->
-<div class="hero" id="hero">
-    <h1>Éco-Smétique Score</h1>
-    <p>La transparence publique qui transforme la cosmétique.</p>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-    <h2>À propos de nous</h2>
-
-    <div class="grid">
-        <div>
-            <p>
-                L’Éco-Smétique Score est un dispositif public d’intérêt général visant à
-                rendre lisible et compréhensible l’impact environnemental, sanitaire et
-                social des produits cosmétiques.
-            </p>
-            <p>
-                Notre mission est simple : permettre à chaque consommateur de savoir ce
-                qu’il achète vraiment, tout en incitant les entreprises à concevoir des
-                produits plus responsables.
-            </p>
-
-            <div class="card">
-                <strong>Nos engagements :</strong>
-                <ul>
-                    <li>Indépendance scientifique</li>
-                    <li>Transparence totale</li>
-                    <li>Pédagogie pour tous</li>
-                    <li>Réduction du greenwashing</li>
-                </ul>
-            </div>
-        </div>
-
-        <div>
-            <img src="images/about.jpg">
-        </div>
-    </div>
+<!-- ===== Hero ===== -->
+<section class="hero" id="accueil" aria-labelledby="titre-hero">
+  <h1 id="titre-hero">La transparence qui transforme la cosmétique</h1>
+  <p>Un score public de A à E, fondé sur l’analyse de la composition, de la santé, de l’environnement et de l’éthique — pour redonner au consommateur le pouvoir de choisir.</p>
+  <div class="hero__badge">Indépendant • Scientifique • Lisible</div>
 </section>
 
-<!-- METHOD -->
-<section id="method">
-    <h2>Comment nous travaillons</h2>
+<!-- ===== Plateforme pédagogique ===== -->
+<section id="pedagogie" aria-labelledby="pedagogie-title">
+  <h2 class="section__title" id="pedagogie-title">Plateforme pédagogique</h2>
+  <p class="section__subtitle">Comprendre clairement les compositions et les impacts des produits cosmétiques préférés grâce à l’Éco‑Smétique Score.</p>
 
-    <div class="grid">
-        <div>
-            <h3>Un référentiel scientifique structuré</h3>
-            <p>
-                Le score se calcule à partir d’un référentiel objectif : environnement,
-                santé et impact social & éthique.
-            </p>
-
-            <div class="card">
-                <ul>
-                    <li><strong>Environnement :</strong> transport, emballage, pollution</li>
-                    <li><strong>Santé :</strong> composition, allergènes, toxicologie</li>
-                    <li><strong>Social :</strong> travail, toxicologue, cruelty-free</li>
-                </ul>
-            </div>
-
-            <h3>Plateforme pédagogique</h3>
-            <p>
-                Notre site permet de comprendre chaque ingrédient, de visualiser l’impact
-                réel d’un produit, et de comparer plusieurs cosmétiques.
-            </p>
-        </div>
-
-        <div>
-            <img src="images/method.jpg">
-        </div>
+  <div class="grid grid--2">
+    <div class="card">
+      <h3>Comprendre la composition (INCI)</h3>
+      <p>Chaque ingrédient est expliqué en langage clair : rôle, famille chimique, niveau de vigilance (allergènes, perturbateurs endocriniens suspectés, CMR). Les informations sont sourcées (ANSES, ECHA, CosIng) et mises à jour.</p>
+      <ul class="clean">
+        <li>Fiches ingrédient synthétiques et pédagogiques</li>
+        <li>Niveaux d’alerte visuels et neutres</li>
+        <li>Glossaire des familles (conservateurs, filtres UV, parfums, etc.)</li>
+      </ul>
     </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-    <h2>Tarification du dispositif</h2>
-
-    <p>
-        Le coût réel d'une évaluation scientifique complète est estimé à <strong>2983 €</strong>.
-        La tarification est adaptée selon la taille des entreprises.
-    </p>
-
-    <table>
-        <tr>
-            <th>Type d'entreprise</th>
-            <th>Tarif</th>
-            <th>Contribution</th>
-        </tr>
-
-        <tr>
-            <td>PME</td>
-            <td>3000 €</td>
-            <td>Prix aligné sur le coût réel pour ne pas freiner l’innovation</td>
-        </tr>
-
-        <tr>
-            <td>ETI</td>
-            <td>5000 €</td>
-            <td>Capacité contributive supérieure</td>
-        </tr>
-
-        <tr>
-            <td>Grandes entreprises</td>
-            <td>7000 €</td>
-            <td>Participation solidaire au financement du dispositif</td>
-        </tr>
-    </table>
 
     <div class="card">
-        <h3>Réévaluation incitative (-50%)</h3>
-        <p>Les produits notés C, D ou E peuvent être réévalués à moitié prix :</p>
-        <ul>
-            <li>PME : 1500 €</li>
-            <li>ETI : 2500 €</li>
-            <li>GE : 3500 €</li>
-        </ul>
+      <h3>Visualiser l’impact global</h3>
+      <p>Pour chaque produit : un score global et 3 sous‑scores (Environnement, Santé, Social & Éthique). Les points clés sont contextualisés (emballage, transport, exposition utilisateur, audits sociaux).</p>
+      <ul class="clean">
+        <li>Repères simples : A (excellent) → E (à améliorer)</li>
+        <li>Explications « pourquoi cette note »</li>
+        <li>Comparaison de produits équivalents</li>
+      </ul>
     </div>
+  </div>
+
+  <div class="kpi">
+    <div class="kpi__item"><strong>4</strong><span>Piliers : score global + 3 sous‑scores</span></div>
+    <div class="kpi__item"><strong>100%</strong><span>Grille publique & transparente</span></div>
+    <div class="kpi__item"><strong>5&nbsp;min</strong><span>Temps moyen de lecture</span></div>
+  </div>
+
+  <div class="callout">
+    💡 Objectif : rendre l’information cosmétique **accessible et actionnable** pour toutes et tous, tout en incitant les marques à améliorer leurs produits.
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-    <h2>Contact</h2>
+<!-- ===== À propos ===== -->
+<section id="apropos" aria-labelledby="apropos-title">
+  <h2 class="section__title" id="apropos-title">À propos de nous</h2>
+  <p class="section__subtitle">Un dispositif d’intérêt général, pensé pour l’indépendance, la rigueur scientifique et la clarté.</p>
 
-    <p>📍 2 Rue François Verny, 29200 Brest</p>
-    <p>📞 +33 7 50 67 89 67</p>
-    <p>📧 contact@ecosmetique-score.fr</p>
+  <div class="grid grid--2">
+    <div class="card">
+      <h3>Notre mission</h3>
+      <p>Réduire l’opacité du marché cosmétique, lutter contre le greenwashing et redonner aux consommateurs un repère fiable, au service de leur santé et de l’environnement.</p>
+      <ul class="clean">
+        <li>Transparence totale des critères et méthodes</li>
+        <li>Indépendance vis‑à‑vis des financeurs industriels</li>
+        <li>Pédagogie et service public de l’information</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Nos engagements</h3>
+      <ul class="clean">
+        <li>Conseil scientifique indépendant & audits tiers</li>
+        <li>Protection des données et conformité RGPD</li>
+        <li>Amélioration continue du référentiel et des outils</li>
+      </ul>
+      <a class="btn btn--primary" href="#travail" aria-label="Aller à la section comment nous travaillons">Voir la méthode</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Comment nous travaillons ===== -->
+<section id="travail" aria-labelledby="travail-title">
+  <h2 class="section__title" id="travail-title">Comment nous travaillons</h2>
+  <p class="section__subtitle">Un référentiel multicritère, public et vérifiable — Environnement, Santé, Social & Éthique.</p>
+
+  <div class="grid grid--2">
+    <div class="card">
+      <h3>Le référentiel (extrait)</h3>
+      <ul class="clean">
+        <li><strong>Environnement</strong> : transport & origine, fabrication (énergie/eau), packaging (rechargeable, recyclable), fin de vie & pollution (biodégradabilité, microplastiques)</li>
+        <li><strong>Santé</strong> : composition (PE suspectés, CMR), transparence (INCI, traçabilité), exposition (rincé/pas, pénétration), additifs problématiques</li>
+        <li><strong>Social & Éthique</strong> : cruelty‑free, conditions de travail, gouvernance & transparence, impact sociétal</li>
+      </ul>
+      <div class="callout">La grille est publiée pour garantir la lisibilité et la comparabilité des résultats.</div>
+    </div>
+
+    <div class="card">
+      <h3>Processus d’évaluation</h3>
+      <div class="steps">
+        <div class="step"><strong>Achat anonyme</strong> du produit dans le commerce pour garantir l’indépendance.</div>
+        <div class="step"><strong>Préparation & analyses</strong> : formulation, emballage, toxicologie, éco‑conception.</div>
+        <div class="step"><strong>Vérifications</strong> : bases scientifiques (ANSES, ECHA, CosIng) + audits si requis.</div>
+        <div class="step"><strong>Calcul du score</strong> et publication sur la plateforme publique.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Tarification ===== -->
+<section id="tarifs" aria-labelledby="tarifs-title">
+  <h2 class="section__title" id="tarifs-title">Tarifs</h2>
+  <p class="section__subtitle">Une tarification équitable, fondée sur le coût réel d’évaluation (~2 983 €), et différenciée selon la taille des entreprises.</p>
+
+  <div class="card">
+    <table class="table" role="table" aria-label="Grille tarifaire">
+      <thead>
+        <tr>
+          <th scope="col">Catégorie d’entreprise</th>
+          <th scope="col">Tarif</th>
+          <th scope="col">Justification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PME</td>
+          <td><strong>3 000 €</strong></td>
+          <td>Aligné sur le coût complet pour l’accessibilité</td>
+        </tr>
+        <tr>
+          <td>ETI</td>
+          <td><strong>5 000 €</strong></td>
+          <td>Valeur stratégique du signal + capacité contributive</td>
+        </tr>
+        <tr>
+          <td>Grandes entreprises</td>
+          <td><strong>7 000 €</strong></td>
+          <td>Péréquation solidaire pour financer l’infrastructure</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout" role="note">
+      🔁 <strong>Réévaluation incitative (‑50 %)</strong> pour les produits initialement notés C, D ou E :
+      PME : 1 500 € • ETI : 2 500 € • GE : 3 500 €.
+    </div>
+  </div>
+</section>
+
+<!-- ===== Contact ===== -->
+<section id="contact" aria-labelledby="contact-title">
+  <h2 class="section__title" id="contact-title">Contact</h2>
+  <div class="grid grid--2">
+    <div class="card">
+      <h3>Nous écrire / nous rencontrer</h3>
+      <p><strong>Adresse :</strong> 2 Rue François Verny, 29200 Brest</p>
+      <p><strong>Téléphone :</strong> +33 7 50 67 89 67</p>
+      <p><strong>Email :</strong> contact@ecosmetique-score.fr</p>
+      <a class="btn btn--primary" href="mailto:contact@ecosmetique-score.fr">Envoyer un email</a>
+    </div>
+    <div class="card">
+      <h3>Pourquoi nous contacter ?</h3>
+      <ul class="clean">
+        <li>Soumettre un produit à l’évaluation</li>
+        <li>Demander une présentation détaillée</li>
+        <li>Proposer un partenariat (scientifique / institutionnel)</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <footer>
-    © 2026 — Éco-Smétique Score — Projet d’innovation publique
+  © 2026 — Éco‑Smétique Score — Projet d’intérêt général
 </footer>
 
+<!-- —— JS minimal : surlignage du lien actif au scroll —— -->
+<script>
+(function(){
+  const links = document.querySelectorAll('.nav a');
+  const ids = Array.from(links).map(a => a.getAttribute('href'));
+  const secs = ids.map(id => document.querySelector(id));
+
+  const onScroll = () => {
+    const y = window.scrollY + 120; // marge sous header
+    let activeIndex = 0;
+    secs.forEach((s, i) => {
+      if (s && s.offsetTop <= y) activeIndex = i;
+    });
+    links.forEach((a, i) => a.classList.toggle('is-active', i === activeIndex));
+  };
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+})();
+</script>
 </body>
 </html>
