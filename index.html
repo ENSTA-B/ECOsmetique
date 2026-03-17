@@ -4,121 +4,106 @@
 <meta charset="UTF-8">
 <title>Éco-Smétique Score</title>
 
-<!-- ————— FONTS ————— -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* ——————————————————————— */
-/* ————— STYLE GLOBAL ————— */
-/* ——————————————————————— */
-
 :root {
-    --green-dark:#0f4d3f;
-    --green:#15803d;
-    --green-light:#dcfce7;
-    --beige:#f4f4ec;
-    --text:#1b1b1b;
+    --green:#0f766e;
+    --green-light:#d1fae5;
+    --green-dark:#065f46;
+    --cream:#f4f7f6;
     --white:#ffffff;
+    --text:#1a1a1a;
 }
 
-body{
+/* GLOBAL */
+body {
     margin:0;
     font-family:'Inter', sans-serif;
-    background:var(--beige);
+    background:var(--cream);
     color:var(--text);
     scroll-behavior:smooth;
 }
 
-/* ——————————————————————— */
-/* ————— HEADER FIXE ————— */
-/* ——————————————————————— */
+section {
+    max-width:1200px;
+    margin:auto;
+    padding:100px 25px;
+}
 
-header{
+h2 {
+    color:var(--green-dark);
+    font-size:36px;
+    margin-bottom:20px;
+    font-weight:700;
+}
+
+p {
+    font-size:17px;
+    line-height:1.6;
+}
+
+/* HEADER FIXE */
+header {
     position:fixed;
     top:0; left:0; right:0;
+    z-index:1000;
     background:var(--white);
-    border-bottom:2px solid var(--green-light);
+    padding:12px 40px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 40px;
-    z-index:1000;
+    border-bottom:2px solid var(--green-light);
 }
 
-header img{
+header img {
     height:55px;
 }
 
-nav a{
+nav a {
     margin:0 18px;
+    font-weight:600;
     text-decoration:none;
     color:var(--green-dark);
-    font-weight:600;
     transition:.3s;
 }
 
-nav a:hover{
+nav a:hover {
     color:var(--green);
 }
 
-/* ——————————————————————— */
-/* ————— SECTION HERO ————— */
-/* ——————————————————————— */
-
-.hero{
-    padding-top:160px;
+/* HERO */
+.hero {
+    padding-top:150px;
     padding-bottom:120px;
+    background:linear-gradient(135deg, var(--green), var(--green-dark));
     text-align:center;
-    background:linear-gradient(135deg, var(--green-dark), var(--green));
     color:white;
 }
 
-.hero h1{
-    font-size:48px;
-    font-weight:700;
-    margin-bottom:15px;
+.hero h1 {
+    font-size:50px;
+    margin-bottom:10px;
 }
 
-.hero p{
+.hero p {
     font-size:20px;
+    opacity:0.9;
     max-width:800px;
     margin:auto;
-    opacity:0.9;
 }
 
-.hero img{
-    margin-top:40px;
-    width:80%;
-    max-width:850px;
-    border-radius:12px;
-}
-
-/* ——————————————————————— */
-/* ————— SECTIONS ————— */
-/* ——————————————————————— */
-
-section{
-    max-width:1100px;
-    margin:auto;
-    padding:90px 25px;
-}
-
-h2{
-    color:var(--green-dark);
-    font-size:34px;
-    margin-bottom:30px;
-    font-weight:700;
-}
-
-.grid{
+/* GRID */
+.grid {
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:50px;
     align-items:center;
 }
 
-.card{
+/* CARD */
+.card {
     background:var(--white);
     padding:25px;
     border-radius:14px;
@@ -126,50 +111,31 @@ h2{
     margin:18px 0;
 }
 
-.highlight{
-    background:var(--green-light);
-    padding:22px;
-    border-left:6px solid var(--green);
-    border-radius:8px;
-    margin-top:20px;
-}
-
-img{
-    width:100%;
-    border-radius:10px;
-}
-
-/* ——————————————————————— */
-/* ————— TABLEAU ————— */
-/* ——————————————————————— */
-
-table{
+/* TABLE PRICING */
+table {
     width:100%;
     border-collapse:collapse;
     margin-top:25px;
 }
 
-th,td{
+th, td {
     border:1px solid #ddd;
     padding:12px;
     text-align:center;
 }
 
-th{
+th {
     background:var(--green-light);
+    font-weight:700;
 }
 
-/* ——————————————————————— */
-/* ————— FOOTER ————— */
-/* ——————————————————————— */
-
-footer{
+/* FOOTER */
+footer {
     background:var(--green-dark);
     color:white;
     text-align:center;
-    padding:45px;
-    margin-top:60px;
-    font-size:15px;
+    padding:40px;
+    margin-top:40px;
 }
 
 </style>
@@ -177,195 +143,145 @@ footer{
 
 <body>
 
-<!-- ——————————————————————— -->
-<!-- ————— HEADER FIXE ————— -->
-<!-- ——————————————————————— -->
-
+<!-- HEADER -->
 <header>
-    <img src="images/logo.png" alt="Logo Éco-Smétique Score">
+    <img src="images/logo       #aboutÀ propos</a>
+        #methodNotre fonctionnement</a>
+        <a href="#pricing">Tarifs</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-    <nav>
-        <a href="#projet">Projet</a>
-        <a href="#probleme">Diagnostic</a>
-        <a href="#score">Score</a>
-        <a href="#modele">Tarification</a>
-        <a
-
-<!-- ——————————————————————— -->
-<!-- ————— HERO ————— -->
-<!-- ——————————————————————— -->
-
-<div class="hero">
+<!-- HERO -->
+<div class="hero" id="hero">
     <h1>Éco-Smétique Score</h1>
-    <p>La transparence publique qui va transformer le marché des cosmétiques.</p>
-    <img src="images/hero.jpg" alt="Cosmétiques verts">
+    <p>La transparence publique qui transforme la cosmétique.</p>
 </div>
 
-<!-- ——————————————————————— -->
-<!-- ————— PRESENTATION ————— -->
-<!-- ——————————————————————— -->
-
-<section id="projet">
-    <h2>Présentation du projet</h2>
+<!-- ABOUT -->
+<section id="about">
+    <h2>À propos de nous</h2>
 
     <div class="grid">
         <div>
             <p>
-                L’Éco-Smétique Score est un dispositif public d’évaluation scientifique
-                de l’impact environnemental, sanitaire et social des produits cosmétiques.
+                L’Éco-Smétique Score est un dispositif public d’intérêt général visant à
+                rendre lisible et compréhensible l’impact environnemental, sanitaire et
+                social des produits cosmétiques.
             </p>
-
             <p>
-                Face au flou informationnel du marché, il apporte un repère clair,
-                simple et fiable, fondé sur un référentiel scientifique indépendant.
+                Notre mission est simple : permettre à chaque consommateur de savoir ce
+                qu’il achète vraiment, tout en incitant les entreprises à concevoir des
+                produits plus responsables.
             </p>
 
-            <div class="highlight">
-                <strong>Objectifs</strong>
+            <div class="card">
+                <strong>Nos engagements :</strong>
                 <ul>
-                    <li>Restaurer le pouvoir de choix du consommateur</li>
-                    <li>Lutter contre le greenwashing</li>
-                    <li>Réduire les impacts environnementaux et sanitaires</li>
-                    <li>Inciter les entreprises à réformer leurs produits</li>
+                    <li>Indépendance scientifique</li>
+                    <li>Transparence totale</li>
+                    <li>Pédagogie pour tous</li>
+                    <li>Réduction du greenwashing</li>
                 </ul>
             </div>
         </div>
 
         <div>
-            <img src="images/eco-score.png" alt="Eco Smétique Score A-E">
+            <img src="images/about.jpg">
         </div>
     </div>
 </section>
 
-<!-- ——————————————————————— -->
-<!-- ————— DIAGNOSTIC ————— -->
-<!-- ——————————————————————— -->
-
-<section id="probleme">
-    <h2>Un marché opaque : le diagnostic</h2>
-
-    <div class="grid">
-        <div><img src="images/market.png"></div>
-
-        <div>
-            <div class="card"><h3>Asymétrie d’information</h3>Le producteur sait ; le consommateur subit.</div>
-            <div class="card"><h3>Lisibilité impossible</h3>Listes INCI techniques et trompeuses.</div>
-            <div class="card"><h3>Greenwashing massif</h3>Labels privés non vérifiés, marketing trompeur.</div>
-        </div>
-    </div>
-</section>
-
-<!-- ——————————————————————— -->
-<!-- ————— SCORE SCIENTIFIQUE ————— -->
-<!-- ——————————————————————— -->
-
-<section id="score">
-    <h2>Le référentiel scientifique</h2>
+<!-- METHOD -->
+<section id="method">
+    <h2>Comment nous travaillons</h2>
 
     <div class="grid">
         <div>
-            <p>Le score se base sur 3 piliers :</p>
-            <ul>
-                <li><strong>Environnement</strong> : transport, fabrication, packaging, pollution</li>
-                <li><strong>Santé</strong> : composition, exposition, allergènes, additifs</li>
-                <li><strong>Impact social & éthique</strong> : travail, transparence, ONG, cruelty-free</li>
-            </ul>
+            <h3>Un référentiel scientifique structuré</h3>
+            <p>
+                Le score se calcule à partir d’un référentiel objectif : environnement,
+                santé et impact social & éthique.
+            </p>
 
-            <div class="highlight">Une méthode transparente, vérifiable, indépendante.</div>
+            <div class="card">
+                <ul>
+                    <li><strong>Environnement :</strong> transport, emballage, pollution</li>
+                    <li><strong>Santé :</strong> composition, allergènes, toxicologie</li>
+                    <li><strong>Social :</strong> travail, toxicologue, cruelty-free</li>
+                </ul>
+            </div>
+
+            <h3>Plateforme pédagogique</h3>
+            <p>
+                Notre site permet de comprendre chaque ingrédient, de visualiser l’impact
+                réel d’un produit, et de comparer plusieurs cosmétiques.
+            </p>
         </div>
 
         <div>
-            <img src="images/grid-evaluation.png">
+            <img src="images/method.jpg">
         </div>
     </div>
 </section>
 
-<!-- ——————————————————————— -->
-<!-- ————— TARIFICATION ————— -->
-<!-- ——————————————————————— -->
-
-<section id="modele">
-    <h2>Modèle économique et tarification</h2>
+<!-- PRICING -->
+<section id="pricing">
+    <h2>Tarification du dispositif</h2>
 
     <p>
-        Le coût réel d’une évaluation scientifique complète est estimé à
-        <strong>2983 €</strong>.  
-        La tarification est différenciée selon la taille des entreprises.
+        Le coût réel d'une évaluation scientifique complète est estimé à <strong>2983 €</strong>.
+        La tarification est adaptée selon la taille des entreprises.
     </p>
 
     <table>
-        <tr><th>Entreprise</th><th>Tarif</th><th>Raison</th></tr>
-        <tr><td>PME</td><td>3000 €</td><td>Accessibilité maximale</td></tr>
-        <tr><td>ETI</td><td>5000 €</td><td>Valeur stratégique du signal</td></tr>
-        <tr><td>Grandes entreprises</td><td>7000 €</td><td>Péréquation solidaire</td></tr>
+        <tr>
+            <th>Type d'entreprise</th>
+            <th>Tarif</th>
+            <th>Contribution</th>
+        </tr>
+
+        <tr>
+            <td>PME</td>
+            <td>3000 €</td>
+            <td>Prix aligné sur le coût réel pour ne pas freiner l’innovation</td>
+        </tr>
+
+        <tr>
+            <td>ETI</td>
+            <td>5000 €</td>
+            <td>Capacité contributive supérieure</td>
+        </tr>
+
+        <tr>
+            <td>Grandes entreprises</td>
+            <td>7000 €</td>
+            <td>Participation solidaire au financement du dispositif</td>
+        </tr>
     </table>
 
     <div class="card">
         <h3>Réévaluation incitative (-50%)</h3>
-        Pour les produits notés C, D ou E :
+        <p>Les produits notés C, D ou E peuvent être réévalués à moitié prix :</p>
         <ul>
-            <li>Réévaluation à moitié prix</li>
-            <li>Incitation à améliorer les formules</li>
-            <li>Transition écologique accélérée</li>
+            <li>PME : 1500 €</li>
+            <li>ETI : 2500 €</li>
+            <li>GE : 3500 €</li>
         </ul>
     </div>
 </section>
 
-<!-- ——————————————————————— -->
-<!-- ————— PLATEFORME ————— -->
-<!-- ——————————————————————— -->
-
-<section id="plateforme">
-    <h2>Plateforme numérique publique</h2>
-
-    <div class="grid">
-
-        <div>
-            <h3>Site internet</h3>
-            <ul>
-                <li>Recherche de produits</li>
-                <li>Comparateur</li>
-                <li>Explications pédagogiques</li>
-                <li>Historique des améliorations</li>
-            </ul>
-            <img src="images/website.png">
-        </div>
-
-        <div>
-            <h3>Application mobile</h3>
-            <ul>
-                <li>Scan code-barres</li>
-                <li>Score instantané</li>
-                <li>Alternatives meilleures</li>
-            </ul>
-            <img src="images/app.png">
-        </div>
-    </div>
-</section>
-
-<!-- ——————————————————————— -->
-<!-- ————— ÉTUDE DE MARCHÉ ————— -->
-<!-- ——————————————————————— -->
-
-<section id="etude">
-    <h2>Étude de marché & enquête</h2>
-    <p>Fondée sur ta méthodologie complète (habitudes, perceptions, tests du score, etc.)</p>
-    <img src="images/study.png">
-</section>
-
-<!-- ——————————————————————— -->
-<!-- ————— CONTACT ————— -->
-<!-- ——————————————————————— -->
-
+<!-- CONTACT -->
 <section id="contact">
     <h2>Contact</h2>
-    <p>Brest — Éco-Smétique Score</p>
-    <p><strong>Tél :</strong> +33 7 50 67 89 67</p>
-    <p><strong>Adresse :</strong> 2 Rue François Verny, 29200 Brest</p>
+
+    <p>📍 2 Rue François Verny, 29200 Brest</p>
+    <p>📞 +33 7 50 67 89 67</p>
+    <p>📧 contact@ecosmetique-score.fr</p>
 </section>
 
 <footer>
-    Projet d’innovation publique — © Éco-Smétique Score 2026
+    © 2026 — Éco-Smétique Score — Projet d’innovation publique
 </footer>
 
 </body>
